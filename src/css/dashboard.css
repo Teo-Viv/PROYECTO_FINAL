@@ -1,0 +1,70 @@
+/* ... [Otros estilos de dashboard.css sin cambios] ... */
+
+/* Filtros de Búsqueda */
+.search-filters {
+    /* ... [Estilos de search-filters sin cambios] ... */
+}
+
+.search-filters__title {
+    /* ... [Estilos de search-filters__title sin cambios] ... */
+    margin-bottom: var(--spacing-md); /* Restauramos el margen */
+}
+
+/* NUEVO CONTENEDOR GRID PARA FILTROS Y LEYENDA */
+.filter-legend-container {
+    display: grid;
+    /* Columna 1 (Filtros) toma el espacio que queda, Columna 2 (Leyenda) tiene ancho fijo */
+    grid-template-columns: 1fr 200px; 
+    gap: var(--spacing-lg);
+    align-items: start; /* Asegura que la leyenda y filtros empiecen alineados arriba */
+}
+
+.filter-grid {
+    /* ... [Estilos de filter-grid sin cambios] ... */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+}
+
+.filter-controls {
+    /* Contenedor de los filtros y el botón para darle flexibilidad */
+}
+
+/* ... [Estilos de filter-group, filter-label, filter-input, search-button sin cambios] ... */
+
+/* Leyenda de Triage */
+.triage-legend {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: var(--spacing-sm);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border: 2px solid var(--color-border);
+    /* Quitamos el max-width para que el grid lo maneje */
+}
+
+/* ... [Resto de estilos de triage-legend sin cambios] ... */
+
+/* --------------------------------------------------
+ * RESPONSIVE ESPECÍFICO DEL DASHBOARD
+ * -------------------------------------------------- */
+
+@media (max-width: 768px) {
+    /* ... [Estilos de header, user-info, nav-tabs sin cambios] ... */
+
+    /* ROMPER EL GRID EN MÓVIL: Pone Filtros arriba, Leyenda abajo */
+    .filter-legend-container {
+        grid-template-columns: 1fr; /* Una sola columna en móvil */
+        gap: var(--spacing-md);
+    }
+    
+    /* El filter-grid de los 4 filtros se adapta automáticamente con auto-fit */
+    .filter-grid {
+        grid-template-columns: 1fr; 
+    }
+
+    /* La leyenda vuelve a tomar todo el ancho en móvil */
+    .triage-legend {
+        max-width: 100%; 
+        margin-top: var(--spacing-md); /* Añadir espacio arriba si la leyenda va abajo */
+    }
+}
