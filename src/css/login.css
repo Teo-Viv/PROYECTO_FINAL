@@ -1,107 +1,173 @@
-/* -- Layout Específico del Login -- */
-.main {
-    max-width: 600px;
-    margin: var(--spacing-xl) auto; /* Centrado en Login */
-    padding: 0 var(--spacing-md);
+/* Paleta de Colores Inspirada en Ecuador y Azul Moderno */
+:root {
+    --color-primary-blue: #0077c2;    /* Azul brillante y moderno */
+    --color-dark-blue: #005a96;
+    --color-ecuador-yellow: #fcd116;
+    --color-ecuador-blue: #0032a0;
+    --color-ecuador-red: #da291c;
+    --color-background-soft: #eef2f7;
+    --color-card-background: #ffffff;
+    --color-text-dark: #333;
+    --color-shadow-soft: 0 8px 30px rgba(0, 0, 0, 0.12);
+    --color-shadow-input: 0 0 0 2px rgba(0, 119, 194, 0.2);
+    --color-firma: #1ABC9C; /* Verde sutil para la firma (Salud) */
 }
 
-/* Login Card Component */
+/* --- Base y Fondo Profesional --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: var(--color-background-soft);
+    background-image: radial-gradient(#d3e8f8 1px, transparent 0);
+    background-size: 40px 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.login-container {
+    width: 100%;
+    max-width: 420px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--color-shadow-soft);
+    transition: transform 0.3s ease-in-out;
+    z-index: 10;
+}
+
+/* --- Banda de Color de Ecuador (Minimalista) --- */
+.color-band {
+    display: flex;
+    height: 6px;
+}
+.yellow { background-color: var(--color-ecuador-yellow); flex: 2; }
+.blue { background-color: var(--color-ecuador-blue); flex: 1; }
+.red { background-color: var(--color-ecuador-red); flex: 1; }
+
+/* --- Tarjeta de Login (Ajustes de Padding y Fondo) --- */
 .login-card {
-    background: linear-gradient(145deg, #ffffff 0%, #f8fffe 100%);
-    border-radius: 16px;
-    box-shadow: 0 8px 32px rgba(0, 121, 107, 0.15);
-    padding: var(--spacing-xl);
-    border: 1px solid rgba(128, 203, 196, 0.3);
-}
-
-.login-card__header {
+    background-color: var(--color-card-background);
+    padding: 50px 40px;
     text-align: center;
-    margin-bottom: var(--spacing-lg);
 }
 
-.login-card__title {
-    font-size: 1.5rem;
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-medical-blue) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    font-weight: 600;
-    margin-bottom: var(--spacing-xs);
-}
-
-/* Form Styles */
-.form {
+/* --- Estilo del Logo (SaludRuralConecta) --- */
+.logo-wrapper {
+    /* Contenedor Flex para alinear y posicionar */
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-md);
+    align-items: center;
+    margin-bottom: 20px; /* Espacio antes del subtítulo */
 }
 
-.form__group {
+.logo-text {
+    font-size: 2.2em;
+    color: var(--color-primary-blue);
+    font-weight: 800;
+    letter-spacing: 1px;
+    line-height: 1; /* Elimina espacio extra */
+    margin-bottom: -10px; /* Superpone un poco la firma */
+}
+
+.logo-firma {
+    /* *** ESTILOS DE LA FIRMA *** */
+    font-family: 'Dancing Script', cursive; /* Fuente manuscrita */
+    font-weight: 700;
+    color: var(--color-firma);
+    font-size: 1.8em; /* Tamaño grande para destacar */
+    /* Posicionamiento: alineado a la derecha del contenedor flex */
+    align-self: flex-end;
+    margin-right: 30px; /* Lo mueve a la derecha dentro del wrapper */
+}
+
+.subtitle {
+    color: #888;
+    font-size: 0.95em;
+    margin-top: 20px; /* Ajuste por el cambio de logo */
+    margin-bottom: 40px;
+    font-weight: 300;
+}
+
+/* --- Formulario y Botones (Mismos estilos profesionales anteriores) --- */
+
+.login-form {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-xs);
+    gap: 25px;
 }
 
-.form__label {
-    font-weight: 600;
-    color: var(--color-text-dark);
-    font-size: 0.95rem;
+.input-group {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 12px 18px;
+    transition: all 0.3s;
+    background-color: #f9f9f9;
 }
 
-.form__input,
-.form__select {
-    padding: var(--spacing-sm);
-    border: 2px solid var(--color-border);
-    border-radius: var(--border-radius);
-    font-size: 1rem;
-    transition: var(--transition);
-    background-color: white;
+.input-group:focus-within {
+    border-color: var(--color-primary-blue);
+    box-shadow: var(--color-shadow-input);
+    background-color: var(--color-card-background);
 }
 
-.form__input:focus,
-.form__select:focus {
-    outline: none;
-    border-color: var(--color-focus);
-    box-shadow: 0 0 0 3px rgba(74, 144, 197, 0.1);
+.icon {
+    color: var(--color-primary-blue);
+    margin-right: 15px;
+    font-size: 1.2em;
 }
 
-.form__submit {
-    padding: var(--spacing-sm) var(--spacing-lg);
-    background-color: var(--color-primary);
-    color: white;
+input[type="text"],
+input[type="password"] {
     border: none;
-    border-radius: var(--border-radius);
-    font-size: 1.1rem;
-    font-weight: 600;
+    outline: none;
+    flex-grow: 1;
+    font-size: 1.05em;
+    padding: 2px 0;
+    color: var(--color-text-dark);
+    background: transparent;
+}
+
+.login-button {
+    background-color: var(--color-primary-blue);
+    color: white;
+    padding: 18px;
+    border: none;
+    border-radius: 10px;
     cursor: pointer;
-    transition: var(--transition);
-    margin-top: var(--spacing-sm);
+    font-size: 1.1em;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: background-color 0.3s, box-shadow 0.3s;
 }
 
-.form__submit:hover {
-    background-color: var(--color-accent);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+.login-button:hover {
+    background-color: var(--color-dark-blue);
+    box-shadow: 0 8px 15px rgba(0, 119, 194, 0.3);
 }
 
-.form__footer {
+.forgot-password {
     text-align: center;
-    margin-top: var(--spacing-md);
+    font-size: 0.85em;
+    margin-top: 10px;
 }
 
-.form__link {
-    color: var(--color-secondary);
+.forgot-password a {
+    color: #6c757d;
     text-decoration: none;
-    font-size: 0.95rem;
-    transition: var(--transition);
+    transition: color 0.3s;
 }
 
-/* Responsive Component Adjustments */
-@media (max-width: 768px) {
-    .login-card {
-        padding: var(--spacing-md);
-    }
-    .login-card__title {
-        font-size: 1.3rem;
-    }
+.forgot-password a:hover {
+    color: var(--color-primary-blue);
+    text-decoration: underline;
 }
